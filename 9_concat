@@ -1,0 +1,13 @@
+#to merge all gvcfs or vcfs in a directory, if vcf change the file suffix in the concat command
+
+#!/bin/bash
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=1
+#SBATCH --mem=16G
+#SBATCH --time=00-23:00:00
+#SBATCH --account=def-yeaman
+
+module load StdEnv/2020 gcc/9.3.0 bcftools/1.11
+ 
+bcftools concat -Ov /path/to/gvcf/files/*.gvcf > /path/to/merged.gvcf
