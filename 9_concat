@@ -10,4 +10,4 @@
 
 module load StdEnv/2020 gcc/9.3.0 bcftools/1.11
  
-bcftools concat -Ov /path/to/gvcf/files/*.gvcf > /path/to/merged.gvcf
+bcftools concat -Ov /home/elicia/scratch/murray_Esideroxylon/final_bams/*.g.vcf.gz > /home/elicia/scratch/murray_Esideroxylon/final_bams/Esideroxylonmerged.g.vcf.gz
