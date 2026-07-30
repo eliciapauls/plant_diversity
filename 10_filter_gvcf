@@ -1,0 +1,18 @@
+##filter commands used to filter gVCF files for downstream use in pixy
+
+## to grab snps from gvcf 
+/data/programs/bcftools-1.9/bcftools view --max-alleles 2 --min-alleles 2 --output-type z Ahallerimerged.g.vcf.gz > variants.vcf.gz
+
+
+##to grab invariant sites from gvcf 
+/data/programs/bcftools-1.9/bcftools view --max-alleles 1 --min-alleles 1 --output-type z Ahallerimerged.g.vcf.gz > invariants.vcf.gz
+
+
+##filter line for variant vcf
+/data/programs/vcftools_0.1.13/bin/vcftools --gzvcf variants.vcf.gz --max-missing 0.7 --minQ 30 --minGQ 20 --minDP 5 --max-alleles 2 --recode --recode-INFO-all --stdout | bgzip > filteredvariants.vcf.gz
+
+
+##merge files back together to get complete gVCF
+/data/programs/bcftools-1.9/bcftools concat -Oz -a filteredvariants.vcf.gz invariants.vcf.gz > Esideroxylonfiltered.vcf.gz
+
+
