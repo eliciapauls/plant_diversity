@@ -1,4 +1,4 @@
-#to merge all gvcfs or vcfs in a directory, if vcf change the file suffix in the concat command
+##to merge all gvcfs or vcfs in a directory, just match the suffix in the concat command to the compiled vcf or gvcf
 
 #!/bin/bash
 #SBATCH --nodes=1
