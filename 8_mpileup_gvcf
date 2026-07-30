@@ -1,0 +1,17 @@
+##mpileup code to generate gvcf files
+#!/bin/bash
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=1
+#SBATCH --mem=16G
+#SBATCH --time=00-23:00:00
+#SBATCH --account=def-yeaman
+#SBATCH --array=1-16
+
+
+
+module load StdEnv/2020 gcc/9.3.0 bcftools/1.11
+
+CHROM=$(sed -n "${SLURM_ARRAY_TASK_ID}p" chromosomes.txt)
+
+bcftools mpileup -Ou -f Amaranthus_tuberculatus.fasta --bam-list list.txt -q 5 -r $CHROM -I -a FMT/AD,FORMAT/DP -T AtuberProm.bed | bcftools call -G - -f GQ -m -g 5 -Oz >   $CHROM\.g.vcf.gz
