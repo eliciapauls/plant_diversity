@@ -1,3 +1,4 @@
+#to concatenate the output files that end up in the step3 directory
 #!/bin/bash
 
 #output file
