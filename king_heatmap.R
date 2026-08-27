@@ -28,7 +28,7 @@ for (i in 1:length (inds)){
 library(gplots)
 
 #Adjusting image size to fit 615 entries
-jpeg("heatmap_kin0_formatted.jpeg", width = 3000, height = 3000)  #Increase width/height to accommodate more entries
+jpeg("heatmap_kin0_formatted.jpeg", width = 3000, height = 3000)  #increase width/height to accommodate more entries
 
 heatmap.2(dd,
           trace = "none",
